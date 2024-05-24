@@ -41,8 +41,8 @@ To create a new component, follow these steps:
 
 - The NX prompt will ask you the following questions:
 
-  **Name**: What name would you like to use? (required)
-  **Description**: What is the package about? (optional)
+  - **Name**: What name would you like to use? (required)
+  - **Description**: What is the package about? (optional)
 
 - Answer the prompts accordingly. If you provided the package name in the command, you won't be asked for it.
 
