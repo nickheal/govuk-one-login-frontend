@@ -26,8 +26,9 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
+      - run: npm install
       - uses: nrwl/nx-set-shas@v4
+      - run: npm test
 
       - run: git branch --track main origin/main
         if: ${{ github.event_name == 'pull_request' }}
