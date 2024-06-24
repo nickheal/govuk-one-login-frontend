@@ -5,3 +5,5 @@ build
 .editorconfig
 .prettierignore
 LICENSE
+*.d.ts.map
+*.md
