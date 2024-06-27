@@ -1,1 +1,8 @@
 node_modules
+dist
+build
+.eslintignore
+.editorconfig
+.prettierignore
+LICENSE
+coverage

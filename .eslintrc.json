@@ -1,47 +1,32 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "es2020": true,
+    "node": true
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "no-var-requires": "off"
+  },
   "overrides": [
     {
-      "files": "*.json",
-      "parser": "jsonc-eslint-parser",
-      "rules": {}
-    },
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.json"],
       "rules": {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
-          }
-        ]
+        "semi": "off",
+        "quotes": ["error", "double"]
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
+      "files": ["*.njk"],
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
-    },
-    {
-      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "files": ["**/*.test.ts"],
       "env": {
         "jest": true
-      },
-      "rules": {}
+      }
     }
   ]
 }

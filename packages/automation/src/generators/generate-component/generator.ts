@@ -5,15 +5,15 @@ import {
   Tree,
   names,
   readJson,
-} from '@nx/devkit';
-import * as path from 'path';
-import { GenerateComponentGeneratorSchema } from './schema';
+} from "@nx/devkit";
+import * as path from "path";
+import { GenerateComponentGeneratorSchema } from "./schema";
 
 export async function generateComponentGenerator(
   tree: Tree,
   options: GenerateComponentGeneratorSchema,
 ) {
-  const scopeName = readJson(tree, 'package.json').name;
+  const scopeName = readJson(tree, "package.json").name;
   const resolvedOptions = {
     ...options,
     name: names(options.name).fileName,
@@ -22,13 +22,13 @@ export async function generateComponentGenerator(
   const projectRoot = `packages/${resolvedOptions.name}`;
   addProjectConfiguration(tree, options.name, {
     root: projectRoot,
-    projectType: 'library',
+    projectType: "library",
     sourceRoot: `${projectRoot}/src`,
     targets: {},
   });
   generateFiles(
     tree,
-    path.join(__dirname, 'files'),
+    path.join(__dirname, "files"),
     projectRoot,
     resolvedOptions,
   );

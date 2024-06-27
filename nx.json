@@ -5,15 +5,9 @@
     }
   },
   "extends": "nx/presets/npm.json",
-  "release": {
-    "changelog": {
-      "projectChangelogs": {
-        "createRelease": "github"
-      }
-    },
-    "projectsRelationship": "independent"
+  "workspaceLayout": {
+    "libsDir": "packages"
   },
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "@nx/js:tsc": {
       "cache": true,
@@ -41,6 +35,38 @@
           "codeCoverage": true
         }
       }
+    },
+    "build": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "lint": {
+      "cache": false,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.js",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.js"
+      ]
+    },
+    "format": {
+      "cache": false,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.prettierrc",
+        "{workspaceRoot}/.prettierignore"
+      ]
     }
-  }
+  },
+
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }
